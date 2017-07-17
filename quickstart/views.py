@@ -23,3 +23,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     """
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
+
+@csrf_exempt
+def provider_states(request, state):
+    if request.method == 'POST':
+        prov_state = request
+        if prov_state == "admin exists and is not an administrator":
+            data = "{\"username\":\"admin\", \"email\":\"admin@dev.net\"}"
+            serializer = UserSerializer(data=data)
+            serializer.save()
+

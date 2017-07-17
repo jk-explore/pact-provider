@@ -22,6 +22,7 @@ from rest_framework_swagger.views import get_swagger_view
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
+router.register(r'providerstates', views.provider_states)
 
 schema_view = get_swagger_view(title='Tutorial API')
 urlpatterns = [

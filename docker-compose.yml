@@ -1,0 +1,16 @@
+api:
+  image: django-rest-app
+  ports:
+      - "8000:8000"
+
+pactverifier:
+  image: dius/pact-provider-verifier-docker
+  links:
+  - api:api
+  #volumes:
+  #- ./pact/pacts:/tmp/pacts                 # If you have local Pacts
+  environment:
+  - pact_urls=http://192.168.99.100/pacts/provider/UsersProvider/consumer/UsersConsumer/latest
+  #- pact_urls=/tmp/pacts/foo-consumer.json # If you have local Pacts
+  - provider_base_url=http://192.168.99.100:8000
+  - provider_states_url=http://192.168.99.100:8000/setup
