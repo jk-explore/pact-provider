@@ -30,6 +30,12 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 @csrf_exempt
 def provider_states(request):
+    """
+    Non-production API endpoint that allows data to be set ready for Pact testing.
+
+    :param request:
+    :return:
+    """
     if request.method == 'POST':
         prov_state = request
         if prov_state == "admin exists and is not an administrator":
@@ -38,7 +44,7 @@ def provider_states(request):
             serializer.save()
             return JsonResponse(serializer.data)
         else:
-            return HttpResponse(status=400)
+            return JsonResponse(request)
     else:
         return HttpResponse(status=405)
 
