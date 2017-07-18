@@ -3,6 +3,9 @@ from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from quickstart.serializers import UserSerializer, GroupSerializer
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponse, JsonResponse
+from rest_framework.parsers import JSONParser
+from rest_framework.renderers import JSONRenderer
 # Create your views here.
 
 
@@ -33,4 +36,5 @@ def provider_states(request):
             data = "{\"username\":\"admin\", \"email\":\"admin@dev.net\"}"
             serializer = UserSerializer(data=data)
             serializer.save()
+            return JsonResponse(serializer.data)
 
