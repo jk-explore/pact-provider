@@ -26,7 +26,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 @csrf_exempt
-def provider_states(request, state):
+def provider_states(request):
     if request.method == 'POST':
         prov_state = request
         if prov_state == "admin exists and is not an administrator":
