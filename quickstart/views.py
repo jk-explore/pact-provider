@@ -24,7 +24,6 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-@csrf_exempt
 def provider_states(request, state):
     if request.method == 'POST':
         prov_state = request
