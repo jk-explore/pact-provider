@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib.auth.models import User, Group
 from rest_framework import viewsets
 from quickstart.serializers import UserSerializer, GroupSerializer
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 
@@ -24,7 +25,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-
+@csrf_exempt
 def provider_states(request, state):
     if request.method == 'POST':
         prov_state = request
