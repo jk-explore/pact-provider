@@ -37,4 +37,8 @@ def provider_states(request):
             serializer = UserSerializer(data=data)
             serializer.save()
             return JsonResponse(serializer.data)
+        else:
+            return HttpResponse(status=400)
+    else:
+        return HttpResponse(status=405)
 
