@@ -37,14 +37,15 @@ def provider_states(request):
     :return:
     """
     if request.method == 'POST':
-        prov_state = request
+        prov_state = JSONParser.parse(request.data)
+
         if prov_state == "admin exists and is not an administrator":
             data = "{\"username\":\"admin\", \"email\":\"admin@dev.net\"}"
             serializer = UserSerializer(data=data)
             serializer.save()
             return JsonResponse(serializer.data)
         else:
-            return JsonResponse(request)
+            return JsonResponse(prov_state)
     else:
         return HttpResponse(status=405)
 
