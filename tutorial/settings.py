@@ -101,9 +101,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAdminUser',
+        # Disabled auth for demo purposes
+        # 'rest_framework.permissions.IsAdminUser',
+        'rest_framework.permissions.AllowAny'
     ],
     'PAGE_SIZE': 10
 }
