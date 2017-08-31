@@ -22,13 +22,13 @@ from rest_framework_swagger.views import get_swagger_view
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
-router.register(r'providerstates', views.provider_states, base_name='providerstates')
+#router.register(r'providerstates', views.provider_states, base_name='providerstates')
 
 schema_view = get_swagger_view(title='Tutorial API')
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^swagger', schema_view),
-    url(r'providerstates', views.provider_states)
+    url(r'^swagger', schema_view)
+    #url(r'providerstates', views.provider_states)
 ]
