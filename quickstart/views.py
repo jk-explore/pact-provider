@@ -29,25 +29,25 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-@csrf_exempt
-def provider_states(request):
-    """
-    Non-production API endpoint that allows data to be set ready for Pact testing.
-
-    :param request:
-    :return:
-    """
-    if request.method == 'POST':
-        json_request = json.loads(request.body)
-        prov_state = json_request['state']
-        if prov_state == "admin exists and is not an administrator":
-            data = "{\"username\":\"admin\", \"email\":\"admin@dev.net\"}"
-            serializer = UserSerializer(data=data)
-            serializer.save()
-            return JsonResponse(serializer.data)
-        else:
-            return HttpResponse(status=400)
-    else:
-        return HttpResponse(status=405)
+# @csrf_exempt
+# def provider_states(request):
+#     """
+#     Non-production API endpoint that allows data to be set ready for Pact testing.
+#
+#     :param request:
+#     :return:
+#     """
+#     if request.method == 'POST':
+#         json_request = json.loads(request.body)
+#         prov_state = json_request['state']
+#         if prov_state == "admin exists and is not an administrator":
+#             data = "{\"username\":\"admin\", \"email\":\"admin@dev.net\"}"
+#             serializer = UserSerializer(data=data)
+#             serializer.save()
+#             return JsonResponse(serializer.data)
+#         else:
+#             return HttpResponse(status=400)
+#     else:
+#         return HttpResponse(status=405)
 
 
